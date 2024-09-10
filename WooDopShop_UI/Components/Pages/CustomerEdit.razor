@@ -1,0 +1,78 @@
+﻿@inject TestData td
+@page "/customeredit/{id:int}"
+@using WooDopShop_Models
+@using WooDopShop_UI.Services
+
+<h3>CustomerEdit</h3>
+
+<EditForm Model="@customer" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="firstName">First Name:</label>
+        <InputText id="firstName" @bind-Value="customer.FirstName" />
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <InputText id="lastName" @bind-Value="customer.LastName" />
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="customer.Email" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="customer.Password" type="password" />
+    </div>
+    <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <InputText id="phoneNumber" @bind-Value="customer.PhoneNumber" />
+    </div>
+    <div>
+        <label for="address">Address:</label>
+        <InputText id="address" @bind-Value="customer.Address" />
+    </div>
+    <div>
+        <label for="city">City:</label>
+        <InputText id="city" @bind-Value="customer.City" />
+    </div>
+    <div>
+        <label for="state">State:</label>
+        <InputText id="state" @bind-Value="customer.State" />
+    </div>
+    <div>
+        <label for="zipCode">Zip Code:</label>
+        <InputText id="zipCode" @bind-Value="customer.ZipCode" />
+    </div>
+    <div>
+        <label for="country">Country:</label>
+        <InputText id="country" @bind-Value="customer.Country" />
+    </div>
+
+    <button type="submit">Save</button>
+</EditForm>
+
+@code {
+    [Parameter] public int id { get; set; }
+    Customer customer = new Customer();
+
+    protected override async Task OnInitializedAsync()
+    {
+        customer = td.Customers.FirstOrDefault(c => c.ID == id);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        // Add your logic to save the customer details
+        // var response = await Http.PostAsJsonAsync("api/customers", customer);
+        // if (response.IsSuccessStatusCode)
+        // {
+        //     // Handle success
+        // }
+        // else
+        // {
+        //     // Handle error
+        // }
+    }
+}

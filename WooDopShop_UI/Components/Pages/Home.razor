@@ -1,0 +1,17 @@
+﻿@page "/"
+@using WooDopShop_UI.Services
+@inject TestData TestData
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+
+@code {
+    private async Task OnInitializedAsync()
+    {
+        TestData = new TestData();
+    }
+}
